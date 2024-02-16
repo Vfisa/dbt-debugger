@@ -1,0 +1,302 @@
+,status,timing,thread_id,execution_time,adapter_response,message,failures,unique_id,compiled,compiled_code,relation_name
+0,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.076721Z', 'completed_at': '2024-02-16T03:27:21.103947Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.151384Z', 'completed_at': '2024-02-16T03:27:21.751760Z'}]",Thread-3,0.7912540435791016,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-7062-0000-5d4967b4ed52'}",SUCCESS 1,,model.keboola_northwind.stg_order_details,True,"with source as (
+    select * from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""ORDER_DETAILS""
+)
+select 
+    ""ORDER_ID""
+    ,""PRODUCT_ID""
+    ,""UNIT_PRICE""
+    ,""QUANTITY""
+    ,""DISCOUNT""
+    ,""_timestamp"" as ingestion_timestamp
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_order_details
+1,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.071700Z', 'completed_at': '2024-02-16T03:27:21.096072Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.138672Z', 'completed_at': '2024-02-16T03:27:21.757590Z'}]",Thread-2,0.8002684116363525,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-7062-0000-5d4967b4ed56'}",SUCCESS 1,,model.keboola_northwind.stg_employees,True,"with source as (
+    select * from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""EMPLOYEES""
+)
+select 
+    ""EMPLOYEE_ID""
+	,""LAST_NAME""
+	,""FIRST_NAME""
+	,""TITLE""
+	,""TITLE_OF_COURTESY""
+	,""BIRTH_DATE""
+	,""HIRE_DATE""
+	,""ADDRESS""
+	,""CITY""
+	,""REGION""
+	,""POSTAL_CODE""
+	,""COUNTRY""
+	,""HOME_PHONE""
+	,""EXTENSION""
+	,""PHOTO""
+	,""NOTES""
+	,""REPORTS_TO""
+	,""PHOTO_PATH""
+    ,""_timestamp"" as ingestion_timestamp
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_employees
+2,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.082893Z', 'completed_at': '2024-02-16T03:27:21.088987Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.090982Z', 'completed_at': '2024-02-16T03:27:21.803429Z'}]",Thread-4,0.8392536640167236,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-6e15-0000-5d4967b4f91e'}",SUCCESS 1,,model.keboola_northwind.stg_orders,True,"with source as (
+    select * from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""ORDERS""
+)
+select
+    ""ORDER_ID""
+    ,""CUSTOMER_ID""
+    ,""EMPLOYEE_ID""
+    ,TRY_CAST(""ORDER_DATE"" AS DATE) AS ""ORDER_DATE""
+    ,TRY_CAST(""REQUIRED_DATE"" AS DATE) AS ""REQUIRED_DATE""
+    ,TRY_CAST(""SHIPPED_DATE"" AS DATE) AS ""SHIPPED_DATE""
+    ,""SHIP_VIA"" AS ""SHIPPER_ID""
+    ,""FREIGHT""
+    ,""SHIP_NAME""
+    ,""SHIP_ADDRESS""
+    ,""SHIP_CITY""
+    ,""SHIP_REGION""
+    ,""SHIP_POSTAL_CODE""
+    ,""SHIP_COUNTRY""
+    ,""_timestamp"" as ingestion_timestamp
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_orders
+3,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.058550Z', 'completed_at': '2024-02-16T03:27:21.097157Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.145602Z', 'completed_at': '2024-02-16T03:27:21.858299Z'}]",Thread-1,0.9725039005279541,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-6e15-0000-5d4967b4f922'}",SUCCESS 1,,model.keboola_northwind.stg_customer,True,"with source as (
+    select * 
+    from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""CUSTOMERS""
+)
+select 
+    ""CUSTOMER_ID""
+	,""COMPANY_NAME""
+	,""CONTACT_NAME""
+	,""CONTACT_TITLE""
+	,""ADDRESS""
+	,""CITY""
+	,""REGION""
+	,""POSTAL_CODE""
+	,""COUNTRY""
+	,""PHONE""
+	,""FAX""
+	,""_timestamp"" AS ingestion_timestamp
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_customer
+4,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.860410Z', 'completed_at': '2024-02-16T03:27:21.870836Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.879652Z', 'completed_at': '2024-02-16T03:27:22.532149Z'}]",Thread-3,0.7541937828063965,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-7062-0000-5d4967b4ed86'}",SUCCESS 1,,model.keboola_northwind.stg_products,True,"with source as (
+    select cast(""SUPPLIER_ID"" as integer) as ""SUPPLIER_ID""
+           ,""PRODUCT_ID""
+           ,""PRODUCT_NAME""
+           ,""CATEGORY_ID""
+           ,TRY_TO_NUMERIC(""QUANTITY_PER_UNIT"") AS ""QUANTITY_PER_UNIT""
+           ,TRY_CAST(""UNIT_PRICE"" AS FLOAT) AS ""UNIT_PRICE""
+           ,TRY_TO_NUMERIC(""UNITS_ON_ORDER"") AS ""UNITS_ON_ORDER""
+           ,TRY_TO_NUMERIC(""UNITS_IN_STOCK"") AS ""UNITS_IN_STOCK""
+           ,TRY_TO_NUMERIC(""REORDER_LEVEL"") AS ""REORDER_LEVEL""
+           ,""DISCONTINUED""
+           ,""_timestamp"" AS ingestion_timestamp
+    from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""PRODUCTS""
+)
+select 
+    *
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_products
+5,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.885018Z', 'completed_at': '2024-02-16T03:27:21.899051Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.901838Z', 'completed_at': '2024-02-16T03:27:22.554817Z'}]",Thread-2,0.7711384296417236,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-6e15-0000-5d4967b4f94a'}",SUCCESS 1,,model.keboola_northwind.stg_shippers,True,"with source as (
+
+    select * from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""SHIPPERS""
+)
+select 
+    ""SHIPPER_ID""
+    ,""COMPANY_NAME""
+    ,""PHONE""
+    ,""_timestamp"" as ingestion_timestamp
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_shippers
+6,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:21.925639Z', 'completed_at': '2024-02-16T03:27:21.932422Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:21.936424Z', 'completed_at': '2024-02-16T03:27:22.560822Z'}]",Thread-4,0.7287037372589111,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-6e15-0000-5d4967b4f94e'}",SUCCESS 1,,model.keboola_northwind.stg_suppliers,True,"with source as (
+
+    select * from ""KEBOOLA_7167"".""in.c-northwind_dataset"".""SUPPLIERS""
+)
+select 
+    ""SUPPLIER_ID""
+	,""COMPANY_NAME""
+	,""CONTACT_NAME""
+	,""CONTACT_TITLE""
+	,""ADDRESS""
+	,""CITY""
+	,""REGION""
+	,""POSTAL_CODE""
+	,""COUNTRY""
+	,""PHONE""
+	,""FAX""
+	,""HOMEPAGE""
+    ,""_timestamp"" as ingestion_timestamp
+from source",KEBOOLA_7167.WORKSPACE_65374051.stg_suppliers
+7,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:22.024701Z', 'completed_at': '2024-02-16T03:27:22.030548Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:22.033280Z', 'completed_at': '2024-02-16T03:27:23.077366Z'}]",Thread-1,1.135427713394165,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-7062-0000-5d4967b4ed96'}",SUCCESS 1,,model.keboola_northwind.dim_employee,True,"with source as (
+    select
+        ""EMPLOYEE_ID""
+        ,""LAST_NAME""
+        ,""FIRST_NAME""
+        ,""TITLE""
+        ,""BIRTH_DATE""
+        ,""HIRE_DATE""
+        ,""ADDRESS""
+        ,""CITY""
+        ,""REGION""
+        ,""POSTAL_CODE""
+        ,""COUNTRY""
+        ,""HOME_PHONE""
+        ,""EXTENSION""
+        ,""NOTES""
+        ,""REPORTS_TO""
+        ,current_timestamp() as insertion_timestamp
+    from KEBOOLA_7167.WORKSPACE_65374051.stg_employees
+),
+unique_source as (
+    select
+        *
+        ,ROW_NUMBER() OVER(PARTITION BY ""EMPLOYEE_ID"" ORDER BY ""EMPLOYEE_ID"") AS ""row_num""
+    from source
+)
+select
+    * EXCLUDE (""row_num"")
+from
+    unique_source
+where
+    ""row_num"" = 1",KEBOOLA_7167.WORKSPACE_65374051.dim_employee
+8,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:22.658787Z', 'completed_at': '2024-02-16T03:27:22.672080Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:22.680242Z', 'completed_at': '2024-02-16T03:27:23.749990Z'}]",Thread-2,1.2228107452392578,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-6e15-0000-5d4967b4f986'}",SUCCESS 1,,model.keboola_northwind.dim_customer,True,"with source as (
+    select
+        ""CUSTOMER_ID""
+        ,""COMPANY_NAME""
+        ,""CONTACT_NAME""
+        ,""CONTACT_TITLE""
+        ,""ADDRESS""
+        ,""CITY""
+        ,""REGION""
+        ,""POSTAL_CODE""
+        ,""COUNTRY""
+        ,""PHONE""
+        ,""FAX""
+        ,current_timestamp() as insertion_timestamp
+    from KEBOOLA_7167.WORKSPACE_65374051.stg_customer
+),
+unique_source as (
+    select
+        *
+        ,ROW_NUMBER() OVER(PARTITION BY ""CUSTOMER_ID"" ORDER BY ""CUSTOMER_ID"") AS ""row_num""
+    from source
+)
+select
+    * EXCLUDE (""row_num"")
+from
+    unique_source
+where
+    ""row_num"" = 1",KEBOOLA_7167.WORKSPACE_65374051.dim_customer
+9,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:22.611159Z', 'completed_at': '2024-02-16T03:27:22.619363Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:22.621023Z', 'completed_at': '2024-02-16T03:27:23.986997Z'}]",Thread-3,1.4524405002593994,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-7062-0000-5d4967b4edb2'}",SUCCESS 1,,model.keboola_northwind.fact_sales,True,"
+with source as(
+    select
+        od.""ORDER_ID"" AS ""ORDER_ID""
+        ,od.""PRODUCT_ID"" AS ""PRODUCT_ID""
+        ,o.""CUSTOMER_ID"" AS ""CUSTOMER_ID""
+        ,o.""EMPLOYEE_ID"" AS ""EMPLOYEE_ID""
+        ,o.""SHIPPER_ID"" AS ""SHIPPER_ID""
+        ,od.""QUANTITY"" AS ""QUANTITY""
+        ,od.""UNIT_PRICE"" AS ""UNIT_PRICE""
+        ,od.""DISCOUNT"" AS ""DISCOUNT""
+        ,date(o.""ORDER_DATE"") as ""ORDER_DATE""
+        ,o.""SHIPPED_DATE"" AS ""SHIPPED_DATE""
+        ,o.""REQUIRED_DATE"" AS ""REQUIRED_DATE""
+        ,current_timestamp() as insertion_timestamp
+    from KEBOOLA_7167.WORKSPACE_65374051.stg_orders o
+    left join
+        KEBOOLA_7167.WORKSPACE_65374051.stg_order_details od
+        on
+        od.""ORDER_ID"" = o.""ORDER_ID""
+    where
+        od.""ORDER_ID"" is not null
+),
+unique_source as (
+    select
+        *
+        ,ROW_NUMBER() OVER(PARTITION BY ""CUSTOMER_ID"", ""EMPLOYEE_ID"", ""ORDER_ID"", ""PRODUCT_ID"", ""SHIPPER_ID"", ""ORDER_DATE"" ORDER BY ""CUSTOMER_ID"", ""EMPLOYEE_ID"", ""ORDER_ID"", ""PRODUCT_ID"", ""SHIPPER_ID"", ""ORDER_DATE"") AS ""row_num""
+    from
+        source
+)
+select
+    * EXCLUDE (""row_num"")
+from
+    unique_source
+where
+    ""row_num"" = 1",KEBOOLA_7167.WORKSPACE_65374051.fact_sales
+10,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:22.665270Z', 'completed_at': '2024-02-16T03:27:22.671064Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:22.675080Z', 'completed_at': '2024-02-16T03:27:24.219673Z'}]",Thread-4,1.6371347904205322,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-6e15-0000-5d4967b4f97e'}",SUCCESS 1,,model.keboola_northwind.dim_product,True,"with source as(
+    select
+        p.""PRODUCT_ID"" AS ""PRODUCT_ID""
+        ,p.""PRODUCT_NAME""
+        ,p.""CATEGORY_ID""
+        ,s.""COMPANY_NAME"" as ""SUPPLIER_COMPANY""
+        ,p.""UNIT_PRICE""
+        ,p.""UNITS_ON_ORDER""
+        ,p.""UNITS_IN_STOCK""
+        ,p.""REORDER_LEVEL""
+        ,p.""DISCONTINUED""
+        ,current_timestamp() as insertion_timestamp
+    from
+        KEBOOLA_7167.WORKSPACE_65374051.stg_products p
+    left join
+        KEBOOLA_7167.WORKSPACE_65374051.stg_suppliers s
+        on
+        s.""SUPPLIER_ID"" = p.""SUPPLIER_ID""
+),
+unique_source as (
+    select
+        *
+        ,ROW_NUMBER() OVER(PARTITION BY ""PRODUCT_ID"" ORDER BY ""PRODUCT_ID"") AS ""row_num""
+    from source
+)
+select
+    * EXCLUDE (""row_num"")
+from
+    unique_source
+where
+    ""row_num"" = 1",KEBOOLA_7167.WORKSPACE_65374051.dim_product
+11,success,"[{'name': 'compile', 'started_at': '2024-02-16T03:27:24.304347Z', 'completed_at': '2024-02-16T03:27:24.316013Z'}, {'name': 'execute', 'started_at': '2024-02-16T03:27:24.318818Z', 'completed_at': '2024-02-16T03:27:26.132820Z'}]",Thread-1,1.9139938354492188,"{'_message': 'SUCCESS 1', 'code': 'SUCCESS', 'rows_affected': 1, 'query_id': '01b2616f-0203-7062-0000-5d4967b4edd6'}",SUCCESS 1,,model.keboola_northwind.obt_sales_overview,True,"with source as (
+    select
+        s.""ORDER_ID""
+        ,s.""PRODUCT_ID""
+        ,s.""CUSTOMER_ID""
+        ,s.""EMPLOYEE_ID""
+        ,s.""SHIPPER_ID""
+        ,s.""QUANTITY""
+        ,s.""UNIT_PRICE""
+        ,s.""DISCOUNT""
+        ,s.""ORDER_DATE""
+        ,s.""SHIPPED_DATE""
+        ,s.""REQUIRED_DATE""
+	    ,c.""COMPANY_NAME"" AS ""CUSTOMER_COMPANY""
+	    ,c.""CONTACT_NAME"" AS ""CUSTOMER_NAME""
+	    ,c.""CONTACT_TITLE"" AS ""CUSTOMER_TITLE""
+	    ,c.""ADDRESS"" AS ""CUSTOMER_ADDRESS""
+	    ,c.""CITY"" AS ""CUSTOMER_CITY""
+	    ,c.""REGION"" AS ""CUSTOMER_REGION""
+	    ,c.""POSTAL_CODE"" AS ""CUSTOMER_POSTAL_CODE""
+	    ,c.""COUNTRY"" AS ""CUSTOMER_COUNTRY""
+	    ,c.""PHONE"" AS ""CUSTOMER_PHONE""
+	    ,c.""FAX"" AS ""CUSTOMER_FAX""
+        ,e.""LAST_NAME"" AS ""EMPLOYEE_LAST_NAME""
+        ,e.""FIRST_NAME"" AS ""EMPLOYEE_FIRST_NAME""
+        ,e.""TITLE"" AS ""EMPLOYEE_TITLE""
+        ,e.""BIRTH_DATE"" AS ""EMPLOYEE_BIRTH_DATE""
+        ,e.""HIRE_DATE"" AS ""EMPLOYEE_HIRE_DATE""
+        ,e.""ADDRESS"" AS ""EMPLOYEE_ADDRESS""
+        ,e.""CITY"" AS ""EMPLOYEE_CITY""
+        ,e.""REGION"" AS ""EMPLOYEE_REGION""
+        ,e.""POSTAL_CODE"" AS ""EMPLOYEE_POSTAL_CODE""
+        ,e.""COUNTRY"" AS ""EMPLOYEE_COUNTRY""
+        ,e.""HOME_PHONE"" AS ""EMPLOYEE_PHONE""
+        ,e.""EXTENSION"" AS ""EMPLOYEE_EXT""
+        ,e.""NOTES"" AS ""EMPLOYEE_NOTE""
+        ,e.""REPORTS_TO"" AS ""EMPLOYEE_REPORTS_TO""
+        ,p.""PRODUCT_NAME""
+        ,p.""CATEGORY_ID""
+        ,p.""SUPPLIER_COMPANY""
+        ,p.""UNITS_ON_ORDER""
+        ,p.""UNITS_IN_STOCK""
+        ,p.""REORDER_LEVEL""
+        ,p.""DISCONTINUED""
+        ,current_timestamp() as insertion_timestamp
+    from KEBOOLA_7167.WORKSPACE_65374051.fact_sales s
+    left join KEBOOLA_7167.WORKSPACE_65374051.dim_customer c
+    on c.""CUSTOMER_ID"" = s.""CUSTOMER_ID""
+    left join KEBOOLA_7167.WORKSPACE_65374051.dim_employee e
+    on e.""EMPLOYEE_ID"" = s.""EMPLOYEE_ID""
+    left join KEBOOLA_7167.WORKSPACE_65374051.dim_product p
+    on p.""PRODUCT_ID"" = s.""PRODUCT_ID""
+)
+select * 
+from source",KEBOOLA_7167.WORKSPACE_65374051.obt_sales_overview
