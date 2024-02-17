@@ -1,1 +1,673 @@
-{"metadata": {"dbt_schema_version": "https://schemas.getdbt.com/dbt/run-results/v5.json", "dbt_version": "1.7.1", "generated_at": "2024-02-16T03:27:26.224174Z", "invocation_id": "99c40cce-43e3-4bc3-947e-738141058e51", "env": {}}, "results": [{"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.076721Z", "completed_at": "2024-02-16T03:27:21.103947Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.151384Z", "completed_at": "2024-02-16T03:27:21.751760Z"}], "thread_id": "Thread-3", "execution_time": 0.7912540435791016, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-7062-0000-5d4967b4ed52"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_order_details", "compiled": true, "compiled_code": "with source as (\n    select * from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"ORDER_DETAILS\"\n)\nselect \n    \"ORDER_ID\"\n    ,\"PRODUCT_ID\"\n    ,\"UNIT_PRICE\"\n    ,\"QUANTITY\"\n    ,\"DISCOUNT\"\n    ,\"_timestamp\" as ingestion_timestamp\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_order_details"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.071700Z", "completed_at": "2024-02-16T03:27:21.096072Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.138672Z", "completed_at": "2024-02-16T03:27:21.757590Z"}], "thread_id": "Thread-2", "execution_time": 0.8002684116363525, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-7062-0000-5d4967b4ed56"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_employees", "compiled": true, "compiled_code": "with source as (\n    select * from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"EMPLOYEES\"\n)\nselect \n    \"EMPLOYEE_ID\"\n\t,\"LAST_NAME\"\n\t,\"FIRST_NAME\"\n\t,\"TITLE\"\n\t,\"TITLE_OF_COURTESY\"\n\t,\"BIRTH_DATE\"\n\t,\"HIRE_DATE\"\n\t,\"ADDRESS\"\n\t,\"CITY\"\n\t,\"REGION\"\n\t,\"POSTAL_CODE\"\n\t,\"COUNTRY\"\n\t,\"HOME_PHONE\"\n\t,\"EXTENSION\"\n\t,\"PHOTO\"\n\t,\"NOTES\"\n\t,\"REPORTS_TO\"\n\t,\"PHOTO_PATH\"\n    ,\"_timestamp\" as ingestion_timestamp\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_employees"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.082893Z", "completed_at": "2024-02-16T03:27:21.088987Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.090982Z", "completed_at": "2024-02-16T03:27:21.803429Z"}], "thread_id": "Thread-4", "execution_time": 0.8392536640167236, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-6e15-0000-5d4967b4f91e"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_orders", "compiled": true, "compiled_code": "with source as (\n    select * from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"ORDERS\"\n)\nselect\n    \"ORDER_ID\"\n    ,\"CUSTOMER_ID\"\n    ,\"EMPLOYEE_ID\"\n    ,TRY_CAST(\"ORDER_DATE\" AS DATE) AS \"ORDER_DATE\"\n    ,TRY_CAST(\"REQUIRED_DATE\" AS DATE) AS \"REQUIRED_DATE\"\n    ,TRY_CAST(\"SHIPPED_DATE\" AS DATE) AS \"SHIPPED_DATE\"\n    ,\"SHIP_VIA\" AS \"SHIPPER_ID\"\n    ,\"FREIGHT\"\n    ,\"SHIP_NAME\"\n    ,\"SHIP_ADDRESS\"\n    ,\"SHIP_CITY\"\n    ,\"SHIP_REGION\"\n    ,\"SHIP_POSTAL_CODE\"\n    ,\"SHIP_COUNTRY\"\n    ,\"_timestamp\" as ingestion_timestamp\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_orders"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.058550Z", "completed_at": "2024-02-16T03:27:21.097157Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.145602Z", "completed_at": "2024-02-16T03:27:21.858299Z"}], "thread_id": "Thread-1", "execution_time": 0.9725039005279541, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-6e15-0000-5d4967b4f922"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_customer", "compiled": true, "compiled_code": "with source as (\n    select * \n    from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"CUSTOMERS\"\n)\nselect \n    \"CUSTOMER_ID\"\n\t,\"COMPANY_NAME\"\n\t,\"CONTACT_NAME\"\n\t,\"CONTACT_TITLE\"\n\t,\"ADDRESS\"\n\t,\"CITY\"\n\t,\"REGION\"\n\t,\"POSTAL_CODE\"\n\t,\"COUNTRY\"\n\t,\"PHONE\"\n\t,\"FAX\"\n\t,\"_timestamp\" AS ingestion_timestamp\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_customer"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.860410Z", "completed_at": "2024-02-16T03:27:21.870836Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.879652Z", "completed_at": "2024-02-16T03:27:22.532149Z"}], "thread_id": "Thread-3", "execution_time": 0.7541937828063965, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-7062-0000-5d4967b4ed86"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_products", "compiled": true, "compiled_code": "with source as (\n    select cast(\"SUPPLIER_ID\" as integer) as \"SUPPLIER_ID\"\n           ,\"PRODUCT_ID\"\n           ,\"PRODUCT_NAME\"\n           ,\"CATEGORY_ID\"\n           ,TRY_TO_NUMERIC(\"QUANTITY_PER_UNIT\") AS \"QUANTITY_PER_UNIT\"\n           ,TRY_CAST(\"UNIT_PRICE\" AS FLOAT) AS \"UNIT_PRICE\"\n           ,TRY_TO_NUMERIC(\"UNITS_ON_ORDER\") AS \"UNITS_ON_ORDER\"\n           ,TRY_TO_NUMERIC(\"UNITS_IN_STOCK\") AS \"UNITS_IN_STOCK\"\n           ,TRY_TO_NUMERIC(\"REORDER_LEVEL\") AS \"REORDER_LEVEL\"\n           ,\"DISCONTINUED\"\n           ,\"_timestamp\" AS ingestion_timestamp\n    from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"PRODUCTS\"\n)\nselect \n    *\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_products"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.885018Z", "completed_at": "2024-02-16T03:27:21.899051Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.901838Z", "completed_at": "2024-02-16T03:27:22.554817Z"}], "thread_id": "Thread-2", "execution_time": 0.7711384296417236, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-6e15-0000-5d4967b4f94a"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_shippers", "compiled": true, "compiled_code": "with source as (\n\n    select * from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"SHIPPERS\"\n)\nselect \n    \"SHIPPER_ID\"\n    ,\"COMPANY_NAME\"\n    ,\"PHONE\"\n    ,\"_timestamp\" as ingestion_timestamp\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_shippers"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:21.925639Z", "completed_at": "2024-02-16T03:27:21.932422Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:21.936424Z", "completed_at": "2024-02-16T03:27:22.560822Z"}], "thread_id": "Thread-4", "execution_time": 0.7287037372589111, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-6e15-0000-5d4967b4f94e"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.stg_suppliers", "compiled": true, "compiled_code": "with source as (\n\n    select * from \"KEBOOLA_7167\".\"in.c-northwind_dataset\".\"SUPPLIERS\"\n)\nselect \n    \"SUPPLIER_ID\"\n\t,\"COMPANY_NAME\"\n\t,\"CONTACT_NAME\"\n\t,\"CONTACT_TITLE\"\n\t,\"ADDRESS\"\n\t,\"CITY\"\n\t,\"REGION\"\n\t,\"POSTAL_CODE\"\n\t,\"COUNTRY\"\n\t,\"PHONE\"\n\t,\"FAX\"\n\t,\"HOMEPAGE\"\n    ,\"_timestamp\" as ingestion_timestamp\nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.stg_suppliers"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:22.024701Z", "completed_at": "2024-02-16T03:27:22.030548Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:22.033280Z", "completed_at": "2024-02-16T03:27:23.077366Z"}], "thread_id": "Thread-1", "execution_time": 1.135427713394165, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-7062-0000-5d4967b4ed96"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.dim_employee", "compiled": true, "compiled_code": "with source as (\n    select\n        \"EMPLOYEE_ID\"\n        ,\"LAST_NAME\"\n        ,\"FIRST_NAME\"\n        ,\"TITLE\"\n        ,\"BIRTH_DATE\"\n        ,\"HIRE_DATE\"\n        ,\"ADDRESS\"\n        ,\"CITY\"\n        ,\"REGION\"\n        ,\"POSTAL_CODE\"\n        ,\"COUNTRY\"\n        ,\"HOME_PHONE\"\n        ,\"EXTENSION\"\n        ,\"NOTES\"\n        ,\"REPORTS_TO\"\n        ,current_timestamp() as insertion_timestamp\n    from KEBOOLA_7167.WORKSPACE_65374051.stg_employees\n),\nunique_source as (\n    select\n        *\n        ,ROW_NUMBER() OVER(PARTITION BY \"EMPLOYEE_ID\" ORDER BY \"EMPLOYEE_ID\") AS \"row_num\"\n    from source\n)\nselect\n    * EXCLUDE (\"row_num\")\nfrom\n    unique_source\nwhere\n    \"row_num\" = 1", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.dim_employee"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:22.658787Z", "completed_at": "2024-02-16T03:27:22.672080Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:22.680242Z", "completed_at": "2024-02-16T03:27:23.749990Z"}], "thread_id": "Thread-2", "execution_time": 1.2228107452392578, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-6e15-0000-5d4967b4f986"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.dim_customer", "compiled": true, "compiled_code": "with source as (\n    select\n        \"CUSTOMER_ID\"\n        ,\"COMPANY_NAME\"\n        ,\"CONTACT_NAME\"\n        ,\"CONTACT_TITLE\"\n        ,\"ADDRESS\"\n        ,\"CITY\"\n        ,\"REGION\"\n        ,\"POSTAL_CODE\"\n        ,\"COUNTRY\"\n        ,\"PHONE\"\n        ,\"FAX\"\n        ,current_timestamp() as insertion_timestamp\n    from KEBOOLA_7167.WORKSPACE_65374051.stg_customer\n),\nunique_source as (\n    select\n        *\n        ,ROW_NUMBER() OVER(PARTITION BY \"CUSTOMER_ID\" ORDER BY \"CUSTOMER_ID\") AS \"row_num\"\n    from source\n)\nselect\n    * EXCLUDE (\"row_num\")\nfrom\n    unique_source\nwhere\n    \"row_num\" = 1", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.dim_customer"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:22.611159Z", "completed_at": "2024-02-16T03:27:22.619363Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:22.621023Z", "completed_at": "2024-02-16T03:27:23.986997Z"}], "thread_id": "Thread-3", "execution_time": 1.4524405002593994, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-7062-0000-5d4967b4edb2"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.fact_sales", "compiled": true, "compiled_code": "\nwith source as(\n    select\n        od.\"ORDER_ID\" AS \"ORDER_ID\"\n        ,od.\"PRODUCT_ID\" AS \"PRODUCT_ID\"\n        ,o.\"CUSTOMER_ID\" AS \"CUSTOMER_ID\"\n        ,o.\"EMPLOYEE_ID\" AS \"EMPLOYEE_ID\"\n        ,o.\"SHIPPER_ID\" AS \"SHIPPER_ID\"\n        ,od.\"QUANTITY\" AS \"QUANTITY\"\n        ,od.\"UNIT_PRICE\" AS \"UNIT_PRICE\"\n        ,od.\"DISCOUNT\" AS \"DISCOUNT\"\n        ,date(o.\"ORDER_DATE\") as \"ORDER_DATE\"\n        ,o.\"SHIPPED_DATE\" AS \"SHIPPED_DATE\"\n        ,o.\"REQUIRED_DATE\" AS \"REQUIRED_DATE\"\n        ,current_timestamp() as insertion_timestamp\n    from KEBOOLA_7167.WORKSPACE_65374051.stg_orders o\n    left join\n        KEBOOLA_7167.WORKSPACE_65374051.stg_order_details od\n        on\n        od.\"ORDER_ID\" = o.\"ORDER_ID\"\n    where\n        od.\"ORDER_ID\" is not null\n),\nunique_source as (\n    select\n        *\n        ,ROW_NUMBER() OVER(PARTITION BY \"CUSTOMER_ID\", \"EMPLOYEE_ID\", \"ORDER_ID\", \"PRODUCT_ID\", \"SHIPPER_ID\", \"ORDER_DATE\" ORDER BY \"CUSTOMER_ID\", \"EMPLOYEE_ID\", \"ORDER_ID\", \"PRODUCT_ID\", \"SHIPPER_ID\", \"ORDER_DATE\") AS \"row_num\"\n    from\n        source\n)\nselect\n    * EXCLUDE (\"row_num\")\nfrom\n    unique_source\nwhere\n    \"row_num\" = 1", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.fact_sales"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:22.665270Z", "completed_at": "2024-02-16T03:27:22.671064Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:22.675080Z", "completed_at": "2024-02-16T03:27:24.219673Z"}], "thread_id": "Thread-4", "execution_time": 1.6371347904205322, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-6e15-0000-5d4967b4f97e"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.dim_product", "compiled": true, "compiled_code": "with source as(\n    select\n        p.\"PRODUCT_ID\" AS \"PRODUCT_ID\"\n        ,p.\"PRODUCT_NAME\"\n        ,p.\"CATEGORY_ID\"\n        ,s.\"COMPANY_NAME\" as \"SUPPLIER_COMPANY\"\n        ,p.\"UNIT_PRICE\"\n        ,p.\"UNITS_ON_ORDER\"\n        ,p.\"UNITS_IN_STOCK\"\n        ,p.\"REORDER_LEVEL\"\n        ,p.\"DISCONTINUED\"\n        ,current_timestamp() as insertion_timestamp\n    from\n        KEBOOLA_7167.WORKSPACE_65374051.stg_products p\n    left join\n        KEBOOLA_7167.WORKSPACE_65374051.stg_suppliers s\n        on\n        s.\"SUPPLIER_ID\" = p.\"SUPPLIER_ID\"\n),\nunique_source as (\n    select\n        *\n        ,ROW_NUMBER() OVER(PARTITION BY \"PRODUCT_ID\" ORDER BY \"PRODUCT_ID\") AS \"row_num\"\n    from source\n)\nselect\n    * EXCLUDE (\"row_num\")\nfrom\n    unique_source\nwhere\n    \"row_num\" = 1", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.dim_product"}, {"status": "success", "timing": [{"name": "compile", "started_at": "2024-02-16T03:27:24.304347Z", "completed_at": "2024-02-16T03:27:24.316013Z"}, {"name": "execute", "started_at": "2024-02-16T03:27:24.318818Z", "completed_at": "2024-02-16T03:27:26.132820Z"}], "thread_id": "Thread-1", "execution_time": 1.9139938354492188, "adapter_response": {"_message": "SUCCESS 1", "code": "SUCCESS", "rows_affected": 1, "query_id": "01b2616f-0203-7062-0000-5d4967b4edd6"}, "message": "SUCCESS 1", "failures": null, "unique_id": "model.keboola_northwind.obt_sales_overview", "compiled": true, "compiled_code": "with source as (\n    select\n        s.\"ORDER_ID\"\n        ,s.\"PRODUCT_ID\"\n        ,s.\"CUSTOMER_ID\"\n        ,s.\"EMPLOYEE_ID\"\n        ,s.\"SHIPPER_ID\"\n        ,s.\"QUANTITY\"\n        ,s.\"UNIT_PRICE\"\n        ,s.\"DISCOUNT\"\n        ,s.\"ORDER_DATE\"\n        ,s.\"SHIPPED_DATE\"\n        ,s.\"REQUIRED_DATE\"\n\t    ,c.\"COMPANY_NAME\" AS \"CUSTOMER_COMPANY\"\n\t    ,c.\"CONTACT_NAME\" AS \"CUSTOMER_NAME\"\n\t    ,c.\"CONTACT_TITLE\" AS \"CUSTOMER_TITLE\"\n\t    ,c.\"ADDRESS\" AS \"CUSTOMER_ADDRESS\"\n\t    ,c.\"CITY\" AS \"CUSTOMER_CITY\"\n\t    ,c.\"REGION\" AS \"CUSTOMER_REGION\"\n\t    ,c.\"POSTAL_CODE\" AS \"CUSTOMER_POSTAL_CODE\"\n\t    ,c.\"COUNTRY\" AS \"CUSTOMER_COUNTRY\"\n\t    ,c.\"PHONE\" AS \"CUSTOMER_PHONE\"\n\t    ,c.\"FAX\" AS \"CUSTOMER_FAX\"\n        ,e.\"LAST_NAME\" AS \"EMPLOYEE_LAST_NAME\"\n        ,e.\"FIRST_NAME\" AS \"EMPLOYEE_FIRST_NAME\"\n        ,e.\"TITLE\" AS \"EMPLOYEE_TITLE\"\n        ,e.\"BIRTH_DATE\" AS \"EMPLOYEE_BIRTH_DATE\"\n        ,e.\"HIRE_DATE\" AS \"EMPLOYEE_HIRE_DATE\"\n        ,e.\"ADDRESS\" AS \"EMPLOYEE_ADDRESS\"\n        ,e.\"CITY\" AS \"EMPLOYEE_CITY\"\n        ,e.\"REGION\" AS \"EMPLOYEE_REGION\"\n        ,e.\"POSTAL_CODE\" AS \"EMPLOYEE_POSTAL_CODE\"\n        ,e.\"COUNTRY\" AS \"EMPLOYEE_COUNTRY\"\n        ,e.\"HOME_PHONE\" AS \"EMPLOYEE_PHONE\"\n        ,e.\"EXTENSION\" AS \"EMPLOYEE_EXT\"\n        ,e.\"NOTES\" AS \"EMPLOYEE_NOTE\"\n        ,e.\"REPORTS_TO\" AS \"EMPLOYEE_REPORTS_TO\"\n        ,p.\"PRODUCT_NAME\"\n        ,p.\"CATEGORY_ID\"\n        ,p.\"SUPPLIER_COMPANY\"\n        ,p.\"UNITS_ON_ORDER\"\n        ,p.\"UNITS_IN_STOCK\"\n        ,p.\"REORDER_LEVEL\"\n        ,p.\"DISCONTINUED\"\n        ,current_timestamp() as insertion_timestamp\n    from KEBOOLA_7167.WORKSPACE_65374051.fact_sales s\n    left join KEBOOLA_7167.WORKSPACE_65374051.dim_customer c\n    on c.\"CUSTOMER_ID\" = s.\"CUSTOMER_ID\"\n    left join KEBOOLA_7167.WORKSPACE_65374051.dim_employee e\n    on e.\"EMPLOYEE_ID\" = s.\"EMPLOYEE_ID\"\n    left join KEBOOLA_7167.WORKSPACE_65374051.dim_product p\n    on p.\"PRODUCT_ID\" = s.\"PRODUCT_ID\"\n)\nselect * \nfrom source", "relation_name": "KEBOOLA_7167.WORKSPACE_65374051.obt_sales_overview"}], "elapsed_time": 7.922848701477051, "args": {"exclude": [], "log_level_file": "debug", "show_resource_report": false, "defer": false, "enable_legacy_logger": false, "vars": {}, "invocation_command": "dbt --log-format json --no-use-colors run -t kbc_prod --profiles-dir /data/dbt-project", "log_format": "json", "which": "run", "target": "kbc_prod", "select": [], "version_check": true, "log_file_max_bytes": 10485760, "quiet": false, "introspect": true, "log_format_file": "json", "partial_parse_file_diff": true, "write_json": true, "profiles_dir": "/data/dbt-project", "strict_mode": false, "send_anonymous_usage_stats": false, "print": true, "static_parser": true, "indirect_selection": "eager", "printer_width": 80, "warn_error_options": {"include": [], "exclude": []}, "cache_selected_only": false, "favor_state": false, "macro_debugging": false, "project_dir": "/data/dbt-project", "populate_cache": true, "partial_parse": true, "use_colors": false, "use_colors_file": true, "log_path": "/data/dbt-project/logs", "log_level": "info"}}
+{
+    "metadata": {
+        "dbt_schema_version": "https://schemas.getdbt.com/dbt/run-results/v4.json",
+        "dbt_version": "1.5.4",
+        "generated_at": "2024-02-17T04:43:12.044857Z",
+        "invocation_id": "9434b584-eb4f-409b-850e-2de19d519211",
+        "env": {}
+    },
+    "results": [
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:42:14.875988Z",
+                    "completed_at": "2024-02-17T04:42:14.905664Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:42:14.931609Z",
+                    "completed_at": "2024-02-17T04:43:02.967954Z"
+                }
+            ],
+            "thread_id": "Thread-1",
+            "execution_time": 48.4727668762207,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb4a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_CATEGORIES__CATEGORY_ID_.0c7f41d558"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:42:14.894586Z",
+                    "completed_at": "2024-02-17T04:42:14.904574Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:42:14.924986Z",
+                    "completed_at": "2024-02-17T04:43:02.963581Z"
+                }
+            ],
+            "thread_id": "Thread-3",
+            "execution_time": 48.47292113304138,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb4e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_CUSTOMER_DEMOGRAPHICS__CUSTOMER_TYPE_ID_.8bd011d6ee"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:42:14.890063Z",
+                    "completed_at": "2024-02-17T04:42:14.905026Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:42:14.928220Z",
+                    "completed_at": "2024-02-17T04:43:03.046738Z"
+                }
+            ],
+            "thread_id": "Thread-2",
+            "execution_time": 48.575011253356934,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb52"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_CUSTOMERS__CUSTOMER_ID_.0057f74459"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:42:14.899321Z",
+                    "completed_at": "2024-02-17T04:42:14.904114Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:42:14.906831Z",
+                    "completed_at": "2024-02-17T04:43:03.051543Z"
+                }
+            ],
+            "thread_id": "Thread-4",
+            "execution_time": 48.588850259780884,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f322"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_EMPLOYEES__EMPLOYEE_ID_.285b133c9c"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:03.451434Z",
+                    "completed_at": "2024-02-17T04:43:03.457335Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:03.458301Z",
+                    "completed_at": "2024-02-17T04:43:04.652320Z"
+                }
+            ],
+            "thread_id": "Thread-2",
+            "execution_time": 1.5928459167480469,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f32e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_ORDERS__ORDER_ID_.1983e69574"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:03.363895Z",
+                    "completed_at": "2024-02-17T04:43:03.376956Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:03.378203Z",
+                    "completed_at": "2024-02-17T04:43:04.621457Z"
+                }
+            ],
+            "thread_id": "Thread-3",
+            "execution_time": 1.6907923221588135,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d3-0000-5d4967e4dd3a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_EMPLOYEE_TERRITORIES__TERRITORY_ID_.29b06543dc"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:03.466727Z",
+                    "completed_at": "2024-02-17T04:43:03.472262Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:03.472961Z",
+                    "completed_at": "2024-02-17T04:43:04.647050Z"
+                }
+            ],
+            "thread_id": "Thread-4",
+            "execution_time": 1.580737829208374,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d3-0000-5d4967e4dd3e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_PRODUCTS__PRODUCT_ID_.3c8f307d98"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:03.356042Z",
+                    "completed_at": "2024-02-17T04:43:03.371965Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:03.372858Z",
+                    "completed_at": "2024-02-17T04:43:04.665448Z"
+                }
+            ],
+            "thread_id": "Thread-1",
+            "execution_time": 1.6989209651947021,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f32a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_EMPLOYEE_TERRITORIES__EMPLOYEE_ID_.9a2bcb83e2"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:05.078699Z",
+                    "completed_at": "2024-02-17T04:43:05.084902Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:05.095715Z",
+                    "completed_at": "2024-02-17T04:43:06.302869Z"
+                }
+            ],
+            "thread_id": "Thread-1",
+            "execution_time": 1.6447861194610596,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb62"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_TERRITORIES__TERRITORY_ID_.f522045fbf"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:05.063119Z",
+                    "completed_at": "2024-02-17T04:43:05.083284Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:05.085826Z",
+                    "completed_at": "2024-02-17T04:43:06.305020Z"
+                }
+            ],
+            "thread_id": "Thread-3",
+            "execution_time": 1.6508500576019287,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d3-0000-5d4967e4dd4a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_SHIPPERS__SHIPPER_ID_.b888d311ee"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:05.072510Z",
+                    "completed_at": "2024-02-17T04:43:05.083812Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:05.089105Z",
+                    "completed_at": "2024-02-17T04:43:06.511689Z"
+                }
+            ],
+            "thread_id": "Thread-4",
+            "execution_time": 1.8743031024932861,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f336"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_SUPPLIERS__SUPPLIER_ID_.a3ebc6982e"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:05.061195Z",
+                    "completed_at": "2024-02-17T04:43:05.084244Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:05.092211Z",
+                    "completed_at": "2024-02-17T04:43:06.518599Z"
+                }
+            ],
+            "thread_id": "Thread-2",
+            "execution_time": 1.8789141178131104,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f33a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_REGION__REGION_ID_.89786e96fb"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:06.718678Z",
+                    "completed_at": "2024-02-17T04:43:06.733523Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:06.734571Z",
+                    "completed_at": "2024-02-17T04:43:07.881531Z"
+                }
+            ],
+            "thread_id": "Thread-1",
+            "execution_time": 1.636159896850586,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb66"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_not_null_in.c-northwind_dataset_US_STATES__STATE_ID_.c82ff0d617"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:06.726169Z",
+                    "completed_at": "2024-02-17T04:43:06.739063Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:06.740006Z",
+                    "completed_at": "2024-02-17T04:43:07.987383Z"
+                }
+            ],
+            "thread_id": "Thread-3",
+            "execution_time": 1.6504590511322021,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d3-0000-5d4967e4dd4e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_CATEGORIES__CATEGORY_ID_.165bf05134"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:06.945268Z",
+                    "completed_at": "2024-02-17T04:43:06.954101Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:06.954954Z",
+                    "completed_at": "2024-02-17T04:43:08.135560Z"
+                }
+            ],
+            "thread_id": "Thread-2",
+            "execution_time": 1.572774887084961,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f346"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_CUSTOMER_DEMOGRAPHICS__CUSTOMER_TYPE_ID_.83e78e7c12"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:06.940527Z",
+                    "completed_at": "2024-02-17T04:43:06.950366Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:06.951159Z",
+                    "completed_at": "2024-02-17T04:43:08.204352Z"
+                }
+            ],
+            "thread_id": "Thread-4",
+            "execution_time": 1.6416831016540527,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb6a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_CUSTOMERS__CUSTOMER_ID_.e8c124e9e2"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:08.377047Z",
+                    "completed_at": "2024-02-17T04:43:08.383276Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:08.384157Z",
+                    "completed_at": "2024-02-17T04:43:09.557182Z"
+                }
+            ],
+            "thread_id": "Thread-3",
+            "execution_time": 1.5549540519714355,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f35e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_ORDERS__ORDER_ID_.ad74be8732"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:08.358596Z",
+                    "completed_at": "2024-02-17T04:43:08.366135Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:08.368235Z",
+                    "completed_at": "2024-02-17T04:43:09.584491Z"
+                }
+            ],
+            "thread_id": "Thread-1",
+            "execution_time": 1.6025850772857666,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70ea-0000-5d4967e4eb76"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_EMPLOYEES__EMPLOYEE_ID_.e88d9aba61"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:08.583312Z",
+                    "completed_at": "2024-02-17T04:43:08.588665Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:08.589543Z",
+                    "completed_at": "2024-02-17T04:43:09.929443Z"
+                }
+            ],
+            "thread_id": "Thread-4",
+            "execution_time": 1.7236180305480957,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f362"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_REGION__REGION_ID_.d39afc0035"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:08.515687Z",
+                    "completed_at": "2024-02-17T04:43:08.523543Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:08.524536Z",
+                    "completed_at": "2024-02-17T04:43:09.938185Z"
+                }
+            ],
+            "thread_id": "Thread-2",
+            "execution_time": 1.8037941455841064,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d3-0000-5d4967e4dd6a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_PRODUCTS__PRODUCT_ID_.52c0f05bd1"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:09.936079Z",
+                    "completed_at": "2024-02-17T04:43:09.945716Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:09.946604Z",
+                    "completed_at": "2024-02-17T04:43:11.132139Z"
+                }
+            ],
+            "thread_id": "Thread-3",
+            "execution_time": 1.5736510753631592,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d3-0000-5d4967e4dd7e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_SHIPPERS__SHIPPER_ID_.cc67ca88a2"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:09.962644Z",
+                    "completed_at": "2024-02-17T04:43:09.967425Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:09.968240Z",
+                    "completed_at": "2024-02-17T04:43:11.261098Z"
+                }
+            ],
+            "thread_id": "Thread-1",
+            "execution_time": 1.6899998188018799,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f37e"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_SUPPLIERS__SUPPLIER_ID_.c47ac6e4b3"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:10.310142Z",
+                    "completed_at": "2024-02-17T04:43:10.316985Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:10.318884Z",
+                    "completed_at": "2024-02-17T04:43:11.550995Z"
+                }
+            ],
+            "thread_id": "Thread-4",
+            "execution_time": 1.6113090515136719,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f386"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_TERRITORIES__TERRITORY_ID_.219341c2ad"
+        },
+        {
+            "status": "pass",
+            "timing": [
+                {
+                    "name": "compile",
+                    "started_at": "2024-02-17T04:43:10.327747Z",
+                    "completed_at": "2024-02-17T04:43:10.333671Z"
+                },
+                {
+                    "name": "execute",
+                    "started_at": "2024-02-17T04:43:10.334883Z",
+                    "completed_at": "2024-02-17T04:43:11.659370Z"
+                }
+            ],
+            "thread_id": "Thread-2",
+            "execution_time": 1.712465763092041,
+            "adapter_response": {
+                "_message": "SUCCESS 1",
+                "code": "SUCCESS",
+                "rows_affected": 1,
+                "query_id": "01b2675b-0203-70d4-0000-5d4967e4f38a"
+            },
+            "message": null,
+            "failures": 0,
+            "unique_id": "test.keboola_northwind.source_unique_in.c-northwind_dataset_US_STATES__STATE_ID_.abf8eacdbe"
+        }
+    ],
+    "elapsed_time": 57.180537700653076,
+    "args": {
+        "log_path": "/Users/martin/Dropbox/Development/keboola_dbt_northwind/logs",
+        "print": true,
+        "partial_parse": true,
+        "log_format_file": "debug",
+        "send_anonymous_usage_stats": true,
+        "version_check": true,
+        "log_level_file": "debug",
+        "which": "test",
+        "macro_debugging": false,
+        "favor_state": false,
+        "warn_error_options": {
+            "include": [],
+            "exclude": []
+        },
+        "target": "keboola_northwind",
+        "cache_selected_only": false,
+        "introspect": true,
+        "printer_width": 80,
+        "indirect_selection": "eager",
+        "exclude": [],
+        "strict_mode": false,
+        "vars": {},
+        "project_dir": "/Users/martin/Dropbox/Development/keboola_dbt_northwind",
+        "write_json": true,
+        "enable_legacy_logger": false,
+        "defer": false,
+        "use_colors": true,
+        "log_level": "info",
+        "profiles_dir": ".",
+        "static_parser": true,
+        "populate_cache": true,
+        "log_format": "default",
+        "select": [],
+        "use_colors_file": true,
+        "quiet": false
+    }
+}

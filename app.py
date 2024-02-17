@@ -1,10 +1,8 @@
-import json
-import sys
 import requests
 from datetime import datetime
-import numpy as np  # np mean, np random
-import pandas as pd  # read csv, df manipulation
-import plotly.express as px  # interactive charts
+import numpy as np
+import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 startpath = "data/in/files/"
@@ -66,7 +64,9 @@ def main():
     # Title of the app
     st.title("dbt run")
 
-    # Button to load data in the side menu
+    # Sidebar menu for the password field and "Load Artifacts" button
+    st.sidebar.header("Authentication")
+    password = st.sidebar.text_input("Password", type="password")
     if st.sidebar.button("Load Artifacts"):
         # Load data from the provided URL
         df = load_data_from_url(dataset_url)
@@ -77,7 +77,8 @@ def main():
         # Calculate time metrics
         start, end, raw_duration = grab_time_metrics(df)
         raw_duration = round(raw_duration, 2)
-        duration = round(df["execution_time"].sum(), 2)
+        # Corrected calculation of duration
+        duration = round((df["execute_completed_at"] - df["compile_started_at"]).sum().total_seconds(), 2)
 
         # create four columns for KPIs
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
