@@ -144,7 +144,7 @@ def main():
         fig = px.timeline(df,
             x_start="execute_started_at",
             x_end="execute_completed_at",
-            y="shortened_name",
+            y="unique_id",
             color="execution_time",
             hover_data=["unique_id","execute_started_at", "execute_completed_at", "execution_time", "type"],
             labels={
