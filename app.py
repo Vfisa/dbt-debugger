@@ -66,23 +66,20 @@ def main():
     # Title of the app
     st.title("dbt run")
 
-    # Button to load data
-    if st.button("Load Artifacts"):
+    # Button to load data in the side menu
+    if st.sidebar.button("Load Artifacts"):
         # Load data from the provided URL
         df = load_data_from_url(dataset_url)
 
         # Preprocess the DataFrame
         df = preprocess_dataframe(df)
-        
-        # Show DataFrame as table
-        #st.write(df)
 
         # Calculate time metrics
         start, end, raw_duration = grab_time_metrics(df)
         raw_duration = round(raw_duration, 2)
         duration = round(df["execution_time"].sum(), 2)
 
-        # create four columns
+        # create four columns for KPIs
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
         # Display KPIs
@@ -106,7 +103,6 @@ def main():
             value=duration
         )
 
-        # Chart
         # charting
         fig = px.timeline(df,
             x_start="execute_started_at",
@@ -126,7 +122,7 @@ def main():
         fig.update_yaxes(autorange="reversed")
         fig.update_xaxes(rangeslider_visible=True)
         st.plotly_chart(fig)
-        
+
         # Create a collapsible section for the table display
         with st.expander("View Table"):
             # Show DataFrame as table
