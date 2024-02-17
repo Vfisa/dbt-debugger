@@ -46,7 +46,9 @@ def preprocess_dataframe(df):
     df['compile_started_at'], df['compile_completed_at'], df['execute_started_at'], df['execute_completed_at'] = zip(*df['timing'].apply(extract_timing))
 
     # Drop the original "timing" column if necessary
-    df.drop(columns=['timing', 'thread_id', 'adapter_response','message','failures', 'compiled', 'compiled_code','relation_name'], inplace=True)
+    columns_to_drop = ['timing', 'thread_id', 'adapter_response','message','failures', 'compiled', 'compiled_code','relation_name']
+    columns_to_drop = [col for col in columns_to_drop if col in df.columns]  # Filter out non-existent columns
+    df.drop(columns=columns_to_drop, inplace=True)
 
     # Types
     df["type"] = df['unique_id'].str.split(".", expand=True)[0]
