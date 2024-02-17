@@ -10,15 +10,23 @@ endpath = "data/out/files/"
 filename_json = "data/in/files/run_results.json"
 dataset_url = "https://raw.githubusercontent.com/Vfisa/dbt-debugger/main/data/in/files/run_results.json"
 
-# Function to load JSON data from URL into a Pandas DataFrame
+ 
 def load_data_from_url(url):
+    """
+    Function to load JSON data from URL into a Pandas DataFrame
+    """
+
     response = requests.get(url)
     data = response.json()
     df = pd.DataFrame(data["results"])
     return df
 
-# Function to calculate time metrics
+ 
 def grab_time_metrics(df):
+    """
+    Function to calculate time metrics
+    """
+
     start_time = df["compile_started_at"].min()
     end_time = df["execute_completed_at"].max()
     duration = (end_time - start_time).total_seconds()
@@ -26,8 +34,26 @@ def grab_time_metrics(df):
     end = end_time.strftime("%H:%M:%S")
     return start, end, duration
 
-# Function to extract values from JSON objects in the "timing" column
+
+def shorten_name(unique_id):
+    """
+    Function to shorten the step name based on some logic (test vs. model)
+    """
+    
+    parts = unique_id.split('.')
+    if parts[0] == "test":
+        suffix = '.'.join(parts[2:]).split('_')[0]
+    elif parts[0] == "model":
+        suffix = parts[-1]
+    else:
+        suffix = unique_id
+    return suffix
+
+
 def extract_timing(row):
+    """
+    Function to extract values from JSON objects in the "timing" column
+    """
     compile_started_at = ''
     compile_completed_at = ''
     execute_started_at = ''
@@ -42,6 +68,10 @@ def extract_timing(row):
     return compile_started_at, compile_completed_at, execute_started_at, execute_completed_at
 
 def preprocess_dataframe(df):
+    """
+    Process dataframe so it has only needed dims and metrics
+    """
+    
     # Apply function to the DataFrame
     df['compile_started_at'], df['compile_completed_at'], df['execute_started_at'], df['execute_completed_at'] = zip(*df['timing'].apply(extract_timing))
 
@@ -60,9 +90,13 @@ def preprocess_dataframe(df):
     df["compile_duration"] = (df["compile_completed_at"] - df["compile_started_at"]).dt.total_seconds()
     df["execute_duration"] = (df["execute_completed_at"] - df["execute_started_at"]).dt.total_seconds()
 
+    # Apply the function to create a new column with shortened names
+    df['shortened_name'] = df['unique_id'].apply(shorten_name)
+
     return df
 
 def main():
+
     # Title of the app
     st.title("dbt run")
 
